@@ -1,7 +1,8 @@
 include README.md README.en.md CONTRIBUTING.md SECURITY.md
 include LICENSE NOTICE PRODUCT.md DESIGN.md
 include pyproject.toml requirements.lock
-recursive-include docs *.md
+include instalar.sh iniciar.command radio-lote
+recursive-include docs *.md *.svg
 recursive-include tests *.py
 recursive-include .github/workflows *.yml
 prune dados
