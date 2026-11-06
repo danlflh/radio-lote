@@ -1,0 +1,12 @@
+include README.md README.en.md CONTRIBUTING.md SECURITY.md
+include LICENSE NOTICE PRODUCT.md DESIGN.md
+include pyproject.toml requirements.lock
+recursive-include docs *.md
+recursive-include tests *.py
+recursive-include .github/workflows *.yml
+prune dados
+prune outputs
+prune .venv
+prune build
+prune dist
+global-exclude *.img *.log *.py[cod] .DS_Store

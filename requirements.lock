@@ -1,0 +1,20 @@
+certifi==2026.10.23
+charset-normalizer==3.5.2
+chirp @ https://github.com/kk7ds/chirp/archive/0a9e92cb21d121bf7caa137592d1885e4969871e.zip#sha256=e58722e2ad10349590bf7e9e5349f1c3cee6a56de1ab85742b9ab029c0aa5131
+idna==3.20
+lark==1.3.1
+linkify-it-py==2.2.0
+markdown-it-py==4.2.0
+mdit-py-plugins==0.6.1
+mdurl==0.1.2
+platformdirs==4.14.5
+portalocker==4.4.2
+pygments==2.21.0
+pyserial==3.5
+requests==2.34.2
+rich==15.0.0
+suds==1.2.0
+textual==8.2.8
+typing-extensions==4.16.0
+urllib3==2.8.0
+yattag==1.16.1

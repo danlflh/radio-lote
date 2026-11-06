@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools==84.2.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "radio-lote"
+version = "0.2.0"
+description = "Local batch programming and verified backups for supported Baofeng radios"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{name = "radio-lote contributors"}]
+keywords = ["radio", "chirp", "baofeng", "serial", "terminal", "batch"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Natural Language :: English",
+  "Natural Language :: Portuguese (Brazilian)",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+  "certifi==2026.10.23",
+  "charset-normalizer==3.5.2",
+  "chirp @ https://github.com/kk7ds/chirp/archive/0a9e92cb21d121bf7caa137592d1885e4969871e.zip#sha256=e58722e2ad10349590bf7e9e5349f1c3cee6a56de1ab85742b9ab029c0aa5131",
+  "idna==3.20",
+  "lark==1.3.1",
+  "linkify-it-py==2.2.0",
+  "markdown-it-py==4.2.0",
+  "mdit-py-plugins==0.6.1",
+  "mdurl==0.1.2",
+  "platformdirs==4.14.5",
+  "portalocker==4.4.2",
+  "pygments==2.21.0",
+  "pyserial==3.5",
+  "requests==2.34.2",
+  "rich==15.0.0",
+  "suds==1.2.0",
+  "textual==8.2.8",
+  "typing-extensions==4.16.0",
+  "urllib3==2.8.0",
+  "yattag==1.16.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/danlflh/radio-lote"
+Repository = "https://github.com/danlflh/radio-lote"
+Issues = "https://github.com/danlflh/radio-lote/issues"
+Changelog = "https://github.com/danlflh/radio-lote/releases"
+
+[project.optional-dependencies]
+dev = ["build==1.6.1", "packaging==26.3", "pyproject-hooks==1.3.3", "setuptools==84.2.1", "wheel==0.48.0"]
+
+[project.scripts]
+radio-lote = "radio_lote.cli:main"
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+include = ["radio_lote", "radio_lote.*"]
+exclude = ["tests", "tests.*"]
+
+[tool.setuptools.package-data]
+radio_lote = ["*.tcss", "locales/*.json"]

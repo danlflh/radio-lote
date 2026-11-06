@@ -1,0 +1,48 @@
+Screen { background: $background; color: $text; }
+Header { dock: top; height: 1; }
+Footer { dock: bottom; height: 1; }
+.page { padding: 0 1; }
+.form-page { padding: 1 2; }
+.screen-title { text-style: bold; height: auto; margin: 0 0 1 0; }
+.title-row { height: 3; align: left middle; }
+.title-row .screen-title { width: 1fr; margin: 0; }
+.title-row Checkbox { width: auto; }
+.hint { color: $text-muted; height: auto; margin: 0 0 1 0; }
+.error-text { color: $error; height: auto; min-height: 1; }
+.toolbar { height: 3; margin: 0; }
+.toolbar Button { width: auto; min-width: 12; margin-right: 1; }
+.buttons { height: 3; margin-top: 1; }
+.buttons Button { width: auto; min-width: 14; margin-right: 1; }
+.field-row { height: auto; }
+.field { width: 1fr; height: auto; margin-right: 1; }
+.field:last-child { margin-right: 0; }
+.form-page Label { height: auto; margin-top: 1; }
+.form-page Input, .form-page Select { margin-bottom: 1; }
+#home-content { height: 1fr; }
+#batch-table { height: 1fr; min-height: 4; }
+#batch-search { margin-bottom: 1; }
+#home-summary { margin: 0; max-height: 2; }
+#batch-title { margin-bottom: 0; }
+#batch-summary { margin-bottom: 0; }
+#batch-content { height: 1fr; }
+#batch-tabs { height: 1fr; }
+TabPane { padding: 0; }
+#radio-table, #attempt-table, #profile-table, #batch-log { height: 1fr; min-height: 3; }
+.radio-fields { height: 3; }
+.radio-labels { height: 1; }
+#radio-label-heading { width: 18; margin-right: 1; }
+#radio-label { width: 18; margin-right: 1; }
+#radio-port { width: 1fr; }
+#operation-help { margin: 0; max-height: 3; }
+#operation-state { height: auto; min-height: 1; max-height: 3; }
+#operation-progress { height: 1; }
+#edit-table { height: 8; min-height: 4; }
+ModalScreen { align: center middle; background: $background 70%; }
+#prompt-box, #language-box { width: 72; max-width: 95%; height: auto; max-height: 90%; border: solid $accent; background: $surface; padding: 1 2; overflow-y: auto; }
+#prompt-box .hint { max-height: 14; overflow-y: auto; }
+#language-box Static { margin-bottom: 1; }
+.no-color Screen, .no-color { color: ansi_white; background: ansi_black; }
+.no-color .hint { color: ansi_white; }
+.no-color .error-text { color: ansi_white; text-style: bold; }
+.no-color Button.-primary, .no-color Button.-warning { background: ansi_black; color: ansi_white; text-style: bold; }
+.no-color DataTable > .datatable--cursor { color: ansi_black; background: ansi_white; }

@@ -1,0 +1,25 @@
+radio-lote
+Copyright (C) 2026 radio-lote contributors
+
+radio-lote is free software: you may redistribute it and/or modify it under
+the GNU General Public License, version 3 or (at your option) any later version.
+It is distributed without any warranty. See LICENSE for the complete terms.
+
+CHIRP attribution
+-----------------
+radio-lote uses the CHIRP project through its Python API. It is an independent
+application and is not an official CHIRP release or a Baofeng product.
+
+Upstream: https://github.com/kk7ds/chirp
+Revision: 0a9e92cb21d121bf7caa137592d1885e4969871e
+Archive SHA-256: e58722e2ad10349590bf7e9e5349f1c3cee6a56de1ab85742b9ab029c0aa5131
+License/source: https://github.com/kk7ds/chirp/tree/0a9e92cb21d121bf7caa137592d1885e4969871e
+
+CHIRP's common code is GPL-3.0-or-later; the H777 driver carries a
+GPL-2.0-or-later notice. Original copyright notices remain with the upstream
+sources, including Dan Smith and CHIRP contributors, and Andrew Morgan for
+the H777 driver. Those sources are installed as a separate pinned dependency;
+radio-lote does not replace their license or claim authorship of them.
+
+Other dependencies retain their own licenses and copyright notices.
+The release metadata and requirements.lock identify the versions used.
