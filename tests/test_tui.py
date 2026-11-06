@@ -307,6 +307,29 @@ class TerminalFlows(unittest.IsolatedAsyncioTestCase):
                 self.assertTrue(app.has_class("no-color"))
                 self.assertEqual(app.screen.query_one("#theme-choice", Select).value, "dark")
 
+    async def test_complete_then_reopen_batch_from_contextual_button(self):
+        batch = self.catalog.create_batch("Finished batch", quantity=1, profile_id=self.profile["id"])
+        attempt = Attempt.create(self.catalog.root / "batches", batch["id"], "R01", "programacao", None)
+        attempt.save_raw("original", synthetic_raw())
+        attempt.update("verificado", write_started=True, verified_at=utc_now(), voice_test="aprovado")
+        app = self.app()
+        async with app.run_test(size=(80, 24)) as pilot:
+            screen = await self.open_batch(app, pilot, batch)
+            self.assertFalse(screen.query_one("#batch-reopen", Button).display)
+            screen.query_one("#batch-complete", Button).focus()
+            await pilot.press("enter")
+            await pilot.pause()
+            self.assertEqual(self.catalog.get_batch(batch["id"])["status"], "completed")
+            self.assertTrue(screen.query_one("#batch-reopen", Button).display)
+            self.assertFalse(screen.query_one("#batch-complete", Button).display)
+            screen.query_one("#batch-reopen", Button).focus()
+            await pilot.press("enter")
+            await pilot.pause()
+            self.assertEqual(self.catalog.get_batch(batch["id"])["status"], "ready")
+            self.assertFalse(screen.query_one("#batch-reopen", Button).display)
+            self.assertTrue(screen.query_one("#batch-complete", Button).display)
+            self.assertEqual(self.instances[-1].calls, [])
+
 
 class FrequencyParsing(unittest.TestCase):
     def test_exact_mhz_and_invalid_values(self):

@@ -356,6 +356,7 @@ class Catalog:
             handle.write(json.dumps(event, ensure_ascii=False) + "\n")
             handle.flush()
             os.fsync(handle.fileno())
+        sync_dir(path.parent)
 
     def logs(self, batch_id: str) -> list[dict]:
         self._batch(batch_id)

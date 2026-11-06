@@ -493,7 +493,7 @@ class BatchScreen(BaseScreen):
             yield Static("", id="batch-title", classes="screen-title", markup=False)
             yield Static("", id="batch-summary", classes="hint", markup=False)
             with HorizontalScroll(classes="toolbar"):
-                for key in ("back", "choose_profile", "advanced", "edit_batch", "complete", "doctor"):
+                for key in ("back", "choose_profile", "advanced", "edit_batch", "complete", "reopen", "doctor"):
                     yield Button(self.t(key), id=f"batch-{key}")
             with TabbedContent(id="batch-tabs"):
                 with TabPane(self.t("radios"), id="radios-pane"):
@@ -543,6 +543,8 @@ class BatchScreen(BaseScreen):
     def refresh_batch(self, *, advance=False):
         try:
             self.batch = self.app.catalog.get_batch(self.batch_id)
+            self.query_one("#batch-reopen", Button).display = self.batch["status"] == "completed"
+            self.query_one("#batch-complete", Button).display = self.batch["status"] not in ("completed", "archived")
             counts = self.batch.get("counts", {})
             self.query_one("#batch-title", Static).update(f"{self.batch['name']}  ·  {self.t(self.batch.get('status', 'draft'))}")
             self.query_one("#batch-summary", Static).update(
@@ -737,6 +739,9 @@ class BatchScreen(BaseScreen):
                 self.app.push_screen(BatchDetailsScreen(self.batch_id))
             elif action == "batch-complete":
                 self.app.catalog.complete_batch(self.batch_id)
+                self.refresh_batch()
+            elif action == "batch-reopen":
+                self.app.catalog.archive_batch(self.batch_id, False)
                 self.refresh_batch()
             elif action == "batch-advanced":
                 if not self.batch.get("profile_id"):
